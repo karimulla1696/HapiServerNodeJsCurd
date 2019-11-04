@@ -12,5 +12,4 @@ module.exports = {
         },
         handler: signupHandler.handler
     },
-
 };

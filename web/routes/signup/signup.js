@@ -11,8 +11,8 @@ const signupValidator = Joi.object({
     countryCode: Joi.number().integer().positive().required(),
     mobile: Joi.number().integer().positive().required(),
     password: Joi.string().min(5).max(10).required(),
-    status: Joi.string().min(3).required(),
-    profilePic: Joi.required()
+    status: Joi.string().min(3).required()
+    // profilePic: Joi.required()
 
 });
 
@@ -20,16 +20,16 @@ const handler = async (request, h) => {
 
     try {
 
-        const user = await db.get().collection('Books').findOne({ emailId: request.payload.emailId });
+        const user = await db.get().collection('Products').findOne({ emailId: request.payload.emailId });
         if (user) return ' user with given email Id already exist';
 
-        const user1 = await db.get().collection('Books').findOne({ mobile: request.payload.mobile });
+        const user1 = await db.get().collection('Products').findOne({ mobile: request.payload.mobile });
         if (user1) return 'user with givne mobile number already exist';
 
         const salt = await bcrypt.genSalt(10);
         //request.payload.password = await bcrypt.hash(request.payload.password, salt);
         const hashedPassword = await bcrypt.hash(request.payload.password, salt);
-        const result = await db.get().collection('Books').insertOne({
+        const result = await db.get().collection('Products').insertOne({
             firstName: request.payload.firstName,
             lastName: request.payload.lastName,
             emailId: request.payload.emailId,
@@ -38,7 +38,7 @@ const handler = async (request, h) => {
             //password: request.payload.password,
             password: hashedPassword,
             status: request.payload.status,
-            profilePic: request.payload.profilePic
+            // profilePic: request.payload.profilePic
         });
 
         const token = jwt.sign({ result }, process.env.JWT_PRIVATE_KEY, { expiresIn: '2min' });
