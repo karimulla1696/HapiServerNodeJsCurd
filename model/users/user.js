@@ -1,34 +1,34 @@
 const db = require('../../library/mongodb');
 let collecionName = 'Products';
 
-const deleteOneBook = async(params) => {
+const deleteOneProduct = async(params) => {
     return await db.get()
         .collection(collecionName)
         .deleteOne(params);
 };
 
-const findAllBook = async(params) => {
+const findAllProducts = async(params) => {
     return await db.get()
         .collection(collecionName)
         .find(params).sort().toArray();
 };
 
-const findOneBook = async(params) => {
+const findOneProduct = async(params) => {
     return await db.get()
         .collection(collecionName)
         .findOne(params);
 };
 
-const postOneBook = async(params) => {
+const postOneProduct = async(params) => {
     return await db.get()
         .collection(collecionName)
         .insertOne(params);
 };
 
-const updateOneBook = async(params, params2) => {
+const updateOneProduct = async(params, params2) => {
     return await db.get()
         .collection(collecionName)
         .updateOne(params, params2);
 };
 
-module.exports = { deleteOneBook, updateOneBook, postOneBook, findOneBook, findAllBook };
+module.exports = { deleteOneProduct, updateOneProduct, postOneProduct, findOneProduct, findAllProducts };

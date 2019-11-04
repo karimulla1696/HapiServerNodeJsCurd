@@ -4,7 +4,7 @@ const libMethod = require('../../../../model/users');
 
 const payload = async(req, h) => {
     try {
-        const result = await libMethod.postOneBook({
+        const result = await libMethod.postOneProduct({
             productId: req.payload.productId,
             productName: req.payload.productName,
             author: req.payload.author,

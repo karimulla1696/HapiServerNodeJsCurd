@@ -4,7 +4,7 @@ const libMethod = require('../../../../model/users');
 
 const payload = async(req, h) => {
     try {
-        const result = await libMethod.updateOneBook({ productId: req.payload.productId }, {
+        const result = await libMethod.updateOneProduct({ productId: req.payload.productId }, {
             $set: {
                 productId: req.payload.productId,
                 productName: req.payload.productName,
