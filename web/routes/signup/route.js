@@ -4,8 +4,12 @@ const signupHandler = require('./signup');
 
 module.exports = {
     method: 'POST',
-    path: '/signup',
+    path: '/signUp',
     options: {
+        description: 'Login details in the database',
+        notes: 'return an object ',
+        tags: ['api'],
+
         validate: {
             payload: signupHandler.signupValidator,
             failAction: error.errorValidator

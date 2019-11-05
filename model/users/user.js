@@ -2,13 +2,13 @@ const db = require('../../library/mongodb');
 let collecionName = 'Products';
 
 const deleteOneProduct = async(params) => {
-    return await db.get()
+    return db.get()
         .collection(collecionName)
         .deleteOne(params);
 };
 
 const findAllProducts = async(params) => {
-    return await db.get()
+    return db.get()
         .collection(collecionName)
         .find(params).sort().toArray();
 };
@@ -26,7 +26,7 @@ const postOneProduct = async(params) => {
 };
 
 const updateOneProduct = async(params, params2) => {
-    return await db.get()
+    return db.get()
         .collection(collecionName)
         .updateOne(params, params2);
 };

@@ -24,7 +24,7 @@ const handler = async (request, h) => {
         if (user) return ' user with given email Id already exist';
 
         const user1 = await db.get().collection('Products').findOne({ mobile: request.payload.mobile });
-        if (user1) return 'user with givne mobile number already exist';
+        if (user1) return 'user with given mobile number already exist';
 
         const salt = await bcrypt.genSalt(10);
         //request.payload.password = await bcrypt.hash(request.payload.password, salt);
