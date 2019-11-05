@@ -14,7 +14,7 @@ const findAllProducts = async(params) => {
 };
 
 const findOneProduct = async(params) => {
-    return await db.get()
+    return db.get()
         .collection(collecionName)
         .findOne(params);
 };

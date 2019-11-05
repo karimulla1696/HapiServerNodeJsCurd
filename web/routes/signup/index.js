@@ -1,1 +1,1 @@
-module.exports = require('./signup');
+module.exports = require('./route');

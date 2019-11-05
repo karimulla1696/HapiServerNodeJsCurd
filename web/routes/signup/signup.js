@@ -11,7 +11,7 @@ const signupValidator = Joi.object({
     countryCode: Joi.number().integer().positive().required(),
     mobile: Joi.number().integer().positive().required(),
     password: Joi.string().min(5).max(10).required(),
-    status: Joi.string().min(3).required()
+    status: Joi.boolean().required()
     // profilePic: Joi.required()
 
 });
@@ -40,9 +40,9 @@ const handler = async (request, h) => {
             status: request.payload.status,
             // profilePic: request.payload.profilePic
         });
-
+    console.log(", process.env.JWT_PRIVATE_KEY", process.env.JWT_PRIVATE_KEY);
         const token = jwt.sign({ result }, process.env.JWT_PRIVATE_KEY, { expiresIn: '2min' });
-        return h.response({ message: req.i18n.__(200) }).header('x-auth-token', token);
+        return h.response({ message: request.i18n.__(200) }).header('x-auth-token', token);
 
 
     } catch (e) {
