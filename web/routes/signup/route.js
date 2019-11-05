@@ -8,7 +8,7 @@ module.exports = {
     options: {
         description: 'Login details in the database',
         notes: 'return an object ',
-        tags: ['api'],
+        tags: ['api', 'signUp'],
 
         validate: {
             payload: signupHandler.signupValidator,
