@@ -1,4 +1,4 @@
-const validator = require('./authValidation');
+// const validator = require('./authValidation');
 require('dotenv').config();
 
 const jwtKey = process.env.SECRET_KEY;

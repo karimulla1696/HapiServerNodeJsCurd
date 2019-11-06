@@ -11,7 +11,7 @@ module.exports = {
         tags: ['api', 'login'],
 
         validate: {
-            payload: loginHandler.signupValidator,
+            payload: loginHandler.payload,
             failAction: error.errorValidator
         },
         handler: loginHandler.handler

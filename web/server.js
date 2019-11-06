@@ -27,6 +27,8 @@ exports.init = async() => {
         {
             plugin: require('good'),
             options: middleware.goodOptions
+        },{
+        plugin:require('./middleware/auth')
         },
         middleware.localization.i18n
     ]);

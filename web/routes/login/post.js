@@ -19,12 +19,14 @@ const handler = async(request, h) => {
         if (!user) return 'Invalid email or mobile whatever you have entered';
         const validPass = bcrypt.compare(request.payload.password, user.password);
         if (!validPass) return 'Invalid password';
-        const exTime = Number(process.env.EXPIRES_TIME);
-        const accessToken = generate.genToken(user.emailId, user.mobile, exTime);
-        const refreshToken = generate.genToken(user.emailId, user.mobile, exTime + 3600);
-        const tokens = { accessToken, refreshToken };
-        const result = await libMethod.updateOneProduct(condition, tokens);
-        if (!result) return 'something went wrong';
+        //const exTime = Number(process.env.EXPIRES_TIME);
+        //const accessToken = (user.emailId, user.mobile, exTime);
+        //const refreshToken = (user.emailId, user.mobile, exTime + 3600);
+        //const tokens = { accessToken, refreshToken };
+        //const result = await libMethod.updateOneProduct(condition, tokens);
+        const tokens =  await  jwt.sign({_id: user.id}, process.env.JWT_PRIVATE_KEY);
+        console.log(tokens);
+        if (!tokens) return 'something went wrong';
         return h.response({
             message: "successfully signIn",
             tokens: tokens

@@ -1,6 +1,7 @@
 const getHandler = require('./get');
 const server = require('../../../../index');
 const error = require('../../../middleware/validator');
+// const jwt = require('jsonwebtoken');
 
 module.exports = [{
     method: 'GET',
@@ -8,6 +9,7 @@ module.exports = [{
     options: {
         description: 'Get products list',
         notes: 'Returns an array of products',
+        auth: 'jwt2',
         tags: ['api', 'user'],
         handler: getHandler.handlerWithoutId
     }
@@ -19,6 +21,7 @@ module.exports = [{
             description: 'Get the one product of given id',
             notes: 'Returns a product',
             tags: ['api', 'user'],
+            auth: 'jwt2',
             handler: getHandler.query,
             validate: {
                 query: getHandler.getValidator,

@@ -4,7 +4,7 @@ const Joi = require('joi');
 
 const handler = async(req, h) => {
     try {
-        const result = await libMethod.deleteOneProduct({ productId: parseInt(req.query.productId) })
+        const result = await libMethod.deleteOneProduct({ productId: parseInt(req.query.productId) });
         if (result.deletedCount === 0) return 'There is no product with given id';
         if (result.deletedCount === 1) {
             return 'product with given id deleted successfully';

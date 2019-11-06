@@ -41,7 +41,7 @@ const handler = async (request, h) => {
             // profilePic: request.payload.profilePic
         });
     console.log(", process.env.JWT_PRIVATE_KEY", process.env.JWT_PRIVATE_KEY);
-        const token = jwt.sign({ result }, process.env.JWT_PRIVATE_KEY, { expiresIn: '2min' });
+        const token = jwt.sign({ result }, process.env.JWT_PRIVATE_KEY);
         return h.response({ message: request.i18n.__(200) }).header('x-auth-token', token);
 
 

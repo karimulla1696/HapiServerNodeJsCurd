@@ -9,6 +9,7 @@ module.exports = {
         description: 'post the product to the database',
         notes: 'return an object ',
         tags: ['api', 'user'],
+        auth: 'jwt2',
 
         handler: postHandler.payload,
         validate: {
